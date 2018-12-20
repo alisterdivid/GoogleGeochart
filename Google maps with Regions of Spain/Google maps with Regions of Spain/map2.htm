@@ -1,0 +1,104 @@
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html' charset='utf-8'/>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+	<link rel="stylesheet" href="map.css" type="text/css" />
+    <script type='text/javascript'>
+        google.load('visualization', '1', {'packages': ['geochart']});
+        google.setOnLoadCallback(drawRegionsMap);
+
+        function drawRegionsMap() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Country');
+            data.addColumn('number', 'Popularity');
+            data.addRows([[{f: 'Islas Baleares', v: 'ES-IB'}, 100], [{f: 'Madrid', v: 'ES-MD'}, 5], [{
+                f: 'Navarra',
+                v: 'ES-NC'
+            }, 10], [{f: 'La Rioja', v: 'ES-RI'}, 15], [{f: 'Asturias', v: 'ES-AS'}, 20], [{
+                f: 'Cantabria',
+                v: 'ES-CB'
+            }, 25], [{f: 'Ceuta', v: 'ES-CE'}, 30], [{f: 'Melilla', v: 'ES-ML'}, 35], [{
+                f: 'Canarias',
+                v: 'ES-CN'
+            }, 40], [{f: 'Andalucía', v: 'ES-AN'}, 45], [{f: 'Aragón', v: 'ES-AR'}, 50], [{
+                f: 'Castilla-La Mancha',
+                v: 'ES-CM'
+            }, 55], [{f: 'Castilla y León', v: 'ES-CL'}, 60], [{f: 'Cataluña', v: 'ES-CT'}, 65], [{
+                f: 'Extremadura',
+                v: 'ES-EX'
+            }, 70], [{f: 'Galicia', v: 'ES-GA'}, 75], [{f: 'Murcia', v: 'ES-MC'}, 80], [{
+                f: 'País Vasco',
+                v: 'ES-PV'
+            }, 85], [{f: 'Valencia', v: 'ES-VC'} ,90]]);
+
+            var options = {
+                'title': 'Map',
+                colorAxis: {colors: ['red', 'green']},
+                'width': 700, 'height': 600, 'region': 'ES', 'resolution': 'provinces'
+            };
+            var container = document.getElementById('map_canvas');
+            var geochart = new google.visualization.GeoChart(container);
+            geochart.draw(data, options);
+        }
+        ;
+    </script>
+</head>
+
+<body>
+<div id='map_canvas'></div>
+
+</body>
+
+</html>
+
+<html>
+<head>
+    <meta http-equiv='Content-Type' content='text/html' charset='utf-8'/>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+        google.load('visualization', '1', {'packages': ['geochart']});
+        google.setOnLoadCallback(drawRegionsMap);
+
+        function drawRegionsMap() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Country');
+            data.addColumn('number', 'Popularity');
+            data.addRows([[{f: 'Islas Baleares', v: 'ES-IB'}, 100], [{f: 'Madrid', v: 'ES-MD'}, 5], [{
+                f: 'Navarra',
+                v: 'ES-NC'
+            }, 10], [{f: 'La Rioja', v: 'ES-RI'}, 15], [{f: 'Asturias', v: 'ES-AS'}, 20], [{
+                f: 'Cantabria',
+                v: 'ES-CB'
+            }, 25], [{f: 'Ceuta', v: 'ES-CE'}, 30], [{f: 'Melilla', v: 'ES-ML'}, 35], [{
+                f: 'Canarias',
+                v: 'ES-CN'
+            }, 40], [{f: 'Andalucía', v: 'ES-AN'}, 45], [{f: 'Aragón', v: 'ES-AR'}, 50], [{
+                f: 'Castilla-La Mancha',
+                v: 'ES-CM'
+            }, 55], [{f: 'Castilla y León', v: 'ES-CL'}, 60], [{f: 'Cataluña', v: 'ES-CT'}, 65], [{
+                f: 'Extremadura',
+                v: 'ES-EX'
+            }, 70], [{f: 'Galicia', v: 'ES-GA'}, 75], [{f: 'Murcia', v: 'ES-MC'}, 80], [{
+                f: 'País Vasco',
+                v: 'ES-PV'
+            }, 85], [{f: 'Valencia', v: 'ES-VC'} ,90]]);
+
+            var options = {
+                'title': 'Map',
+                colorAxis: {colors: ['red', 'green']},
+                'width': 700, 'height': 600, 'region': 'ES', 'resolution': 'provinces'
+            };
+            var container = document.getElementById('map_canvas');
+            var geochart = new google.visualization.GeoChart(container);
+            geochart.draw(data, options);
+        }
+        ;
+    </script>
+</head>
+
+<body>
+<div id='map_canvas'></div>
+
+</body>
+
+</html>

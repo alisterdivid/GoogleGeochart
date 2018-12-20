@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!-- http://gmaps-samples-v3.googlecode.com/svn/trunk/drawing/drawing-tools.html -->
+<!-- https://developers.google.com/maps/documentation/javascript/examples/places-searchbox -->
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>Drawing Tools (B)</title>
+    <!-- NOTE: two libraries to load are comma-separated; otherwise last mention of the query string arg overwrites the previous -->
+    <!--<script type="text/javascript"-->
+    <!--src="http://maps.google.com/maps/api/js?sensor=false&v=3.21.5a&libraries=drawing&signed_in=true&libraries=places,drawing"></script>-->
+    <script src="http://localhost/test.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var drawingManager;
+        var nhoodGeoRegions = [];
+        var map;
+
+        function selectLastNHoodRegion() {
+
+            var d = sampleJson;
+            var e = d.locationID;
+            var latlngbounds = new google.maps.LatLngBounds();
+            for (var f = [], g = 0; g < d.location_coords.length; g++) for (var h = d.location_coords[g], i = 0; i < h.length; i++) {
+                for (var j = [], k = h[i], l = 0; l < k.length; l++) {
+                    // j.push({lat: k[l][1], lng: k[l][0]});
+                    var latLng = new google.maps.LatLng(k[l][1], k[l][0]);
+                    j.push(latLng);
+                    latlngbounds.extend(latLng);
+                }
+                f.push(j);
+            }
+
+            var m = {
+                line_color: "#0553A0",
+                line_weight: 1,
+                color: "#0553A0",
+                opacity: .1
+            };
+            var n = new google.maps.Polygon({
+                id: e,
+                title: d.name,
+                paths: f,
+                strokeWeight: m.line_weight,
+                strokeColor: m.line_color,
+                fillColor: m.color,
+                fillOpacity: m.opacity,
+            });
+            nhoodGeoRegions[e] = n;
+            n.setMap(map);
+//            map.fitBounds(latlngbounds);
+//            map.setCenter(latlngbounds.getCenter());
+//            getNHoodGeocodes();
+        }
+
+        //        function getNHoodGeocodes() {
+        //            var currentViewport = map.getBounds();
+        //
+        //            var a = {
+        //                xmin: currentViewport.getSouthWest().lng(),
+        //                xmax: currentViewport.getNorthEast().lng(),
+        //                ymin: currentViewport.getSouthWest().lat(),
+        //                ymax: currentViewport.getNorthEast().lat(),
+        //                z: map.getZoom()
+        //            };
+        //            // var count = 0;
+        //            var c = a.z, d = 360 / Math.pow(2, c), e = 180 / Math.pow(2, c);
+        //            for (var g = Math.floor(a.xmin / d), h = Math.floor(a.ymin / e), i = Math.ceil(a.xmax / d), j = Math.ceil(a.ymax / e), k = i - g, l = j - h, m = 0; k > m; m++)
+        //                for (var n = 0; l > n; n++) {
+        //                    // if (count == 0){
+        //                    //     count++;
+        //                    //     continue;
+        //                    // }
+        //                    //
+        //                    // if (count == 2)
+        //                    //     break;
+        //                    var o = g + m, p = h + n;
+        //                    geo_regionRequest(o, p, c);
+        //                    // count++;
+        //                }
+        //        }
+        //
+        //        function geo_regionRequest(a, b, c, d) {
+        //            var cdn = "https://cdns.sharketyprop.com";
+        //            var e = cdn.replace(/cdn\./, "s" + Math.abs((a + b) % 3) + "-cdn.");
+        //            e += "/webservices/geopicker/get_polygons_google.d.js?", e += "&tile=" + a + "," + b, e += "&zoom=" + c, e += "&layer_type=" + "nhood", e += d ? "&layer=" + d : "&layer=" + "state"/*,e += "&callback=" + "GeoPickerMap" + ".geo_regionsShow"*/, e += "&app=" + "point2homes",
+        //                $.ajax({
+        //                    url: e,
+        //                    dataType: "jsonp",
+        //                    jsonp: "callback",
+        //                    cache: !0,
+        //                    success: function (response) {
+        //                        geo_regionsDraw(response);
+        //                    }
+        //                });
+        //            // this.geo_regionsDraw(response)// server response
+        //        }
+        //
+        //        function geo_convertPxToLatLong(a) {
+        //            for (var b = 360 / Math.pow(2, a.zoom), c = 180 / Math.pow(2, a.zoom), d = {x: b, y: c}, e = {
+        //                x: 256,
+        //                y: 256
+        //            }, f = {
+        //                x: d.x / e.x,
+        //                y: d.y / e.y
+        //            }, g = 0; g < a.features.length; g++) for (var h = a.features[g], i = 0; i < h.geometry.coords.length; i++) for (var j = h.geometry.coords[i], k = 0; k < j.length; k++) for (var l = j[k], m = 0; m < l.length; m++) l[m][0] = a.xtile * b + f.x * l[m][0], l[m][1] = a.ytile * c - f.y * l[m][1] + d.y;
+        //            return a
+        //        }
+        //
+        //        function geo_regionsDraw(a) {
+        //            // console.log(a);
+        //            a = geo_convertPxToLatLong(a);
+        //            for (var b = this, c = 0; c < a.features.length; c++) {
+        //                var d = a.features[c], e = d.id;
+        //                // console.log("Features Length: " + d.geometry.coords[0][0].length);
+        //                if (!nhoodGeoRegions[e]) {
+        //                    for (var f = [], g = 0; g < d.geometry.coords.length; g++) for (var h = d.geometry.coords[g], i = 0; i < h.length; i++) {
+        //                        for (var j = [], k = h[i], l = 0; l < k.length; l++) j.push(new google.maps.LatLng(k[l][1], k[l][0]));
+        //                        f.push(j)
+        //                    }
+        //                    // console.log(f);
+        //                    var m = {
+        //                        line_color: "#0553A0",
+        //                        line_weight: 1,
+        //                        color: "#0553A0",
+        //                        opacity: .1
+        //                    };
+        //                    var n = new google.maps.Polygon({
+        //                        id: e,
+        //                        title: d.name,
+        //                        paths: f,
+        //                        strokeWeight: m.line_weight,
+        //                        strokeColor: m.line_color,
+        //                        fillColor: m.color,
+        //                        fillOpacity: m.opacity,
+        //                        zoom: a.zoom
+        //                    });
+        //                    nhoodGeoRegions[e] = n;
+        //                    n.setMap(map);
+        //                }
+        //            }
+        //        }
+
+        /////////////////////////////////////
+        function initialize() {
+            map = new google.maps.Map(document.getElementById('map'), { //var
+                zoom: 4,//10,
+                center: new google.maps.LatLng(50.8119912, -110.1691978), /*lat: 50.8119912, lng: -130.1691978*/
+                zoomControl: true
+            });
+            var polyOptions = {
+                strokeWeight: 0,
+                fillOpacity: 0.45,
+                editable: true
+            };
+
+//            google.maps.event.addListener(map, 'bounds_changed', function () {
+//                var bounds = map.getBounds();
+//
+//            }); //////////////////////
+
+            selectLastNHoodRegion();
+        }
+    </script>
+</head>
+<body>
+<div id="map" style="margin-top:50px;width: 1039px;height: 463px;margin-left: 50px"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzjdJGgDHkwHNEugfq2z1G3o5c4RLggEg&libraries=places,drawing&callback=initialize"
+        async defer></script>
+</body>
+</html>

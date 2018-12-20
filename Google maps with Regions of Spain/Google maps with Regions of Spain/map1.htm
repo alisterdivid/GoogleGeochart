@@ -1,0 +1,106 @@
+
+<!--<!DOCTYPE html>-->
+<html>
+<head>
+    <script src="ammap/ammap.js"></script>
+    <script src="ammap/spainLow.js"></script>
+    <script src="ammap/export.min.js"></script>
+    <link rel="stylesheet" href="ammap/export.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="map.css" type="text/css" />
+    <script src="ammap/light.js"></script>
+
+    <script type='text/javascript'>
+        var map = AmCharts.makeChart( "chartdiv", {
+            "type": "map",
+            "theme": "light",
+            "colorSteps": 10,
+
+            "dataProvider": {
+                "map": "spainLow",
+                "areas": [ {
+                    "id": "ES-AN",
+                    "value": 5
+                }, {
+                    "id": "ES-AR",
+                    "value": 10
+                }, {
+                    "id": "ES-AS",
+                    "value": 15
+                }, {
+                    "id": "ES-CB",
+                    "value": 20
+                }, {
+                    "id": "ES-CL",
+                    "value": 25
+                }, {
+                    "id": "ES-CM",
+                    "value": 30
+                }, {
+                    "id": "ES-CN",
+                    "value": 35
+                }, {
+                    "id": "ES-CT",
+                    "value": 40
+                }, {
+                    "id": "ES-EX",
+                    "value": 45
+                }, {
+                    "id": "ES-GA",
+                    "value": 50
+                }, {
+                    "id": "ES-RI",
+                    "value": 55
+                }, {
+                    "id": "ES-MD",
+                    "value": 60
+                }, {
+                    "id": "ES-MC",
+                    "value": 65
+                }, {
+                    "id": "ES-NC",
+                    "value": 70
+                }, {
+                    "id": "ES-IB",
+                    "value": 75
+                }, {
+                    "id": "ES-PV",
+                    "value": 80
+                }, {
+                    "id": "ES-VC",
+                    "value": 85
+                }]
+
+            },
+
+
+        "areasSettings": {
+                "autoZoom": true,
+                "selectedColor":"#0000ff",
+                "color":"#ff0000",
+                "colorSolid":"#00ff00",
+                "descriptionWindowY": 20,
+                "descriptionWindowX": 550,
+                "descriptionWindowWidth": 280,
+                "descriptionWindowHeight": 330,
+                "fill-opacity":"1"
+            },
+
+            "valueLegend": {
+                "right": 10,
+                "minValue": "0",
+                "maxValue": "100"
+            },
+
+            "export": {
+                "enabled": false
+            }
+
+        } );
+    </script>
+</head>
+<body>
+<div id="chartdiv"></div>
+</body>
+
+</html>
+

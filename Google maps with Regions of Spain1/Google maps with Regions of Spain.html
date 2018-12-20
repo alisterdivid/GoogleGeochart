@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1', {'packages': ['map']});
+        google.setOnLoadCallback(drawRegionsMap);
+        function drawRegionsMap() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Country');
+            data.addColumn('number', 'Anual');
+            data.addRows([
+                ['',      {v:-6, f:'-6%'}],
+                [{f: 'Islas Baleares', v: 'CA-NS'},     {v:4.2, f:'4.2%'}  ],
+                [{f: 'Madrid', v: 'CA-ON'},             {v:4.3, f:'4.3%'}   ],
+                [{f: 'Navarra',v: 'CA-NB'},             {v:1.8, f:'1.8%'},  ],
+                [{f: 'La Rioja', v: 'CA-BC'},           {v:-5.1, f:'-5.1%'},  ],
+                [{f: 'Asturias', v: 'CA-BC'},           {v:1.5, f:'1.5%'},    ],
+                [{f: 'Cantabria',v: 'CA-NU'},           {v:-1.8, f:'-1.8%'},  ],
+                [{f: 'Ceuta', v: 'CA-AB'},              {v:-1.0, f:'-1.0%'},   ],
+                [{f: 'Melilla', v: 'CA-SK'},            {v:1.7, f:'1.7%'},    ],
+                [{f: 'Canarias', v: 'ES-CN'},           {v:2.6, f:'2.6%'},  ],
+                [{f: 'Andalucía', v: 'ES-AN'},          {v:-0.5, f:'-0.5%'},   ],
+                [{f: 'Aragón', v: 'ES-AR'},             {v:-1.5, f:'-1.5%'},   ],
+                [{f: 'Castilla-La Mancha',v: 'ES-CM'},  {v:-1.0, f:'-1.0%'},  ],
+                [{f: 'Castilla y León', v: 'ES-CL'},    {v:-1.4, f:'-1.4%'},   ],
+                [{f: 'Cataluña', v: 'ES-CT'},           {v:4.8, f:'4.8%'},     ],
+                [{f: 'Extremadura',v: 'ES-EX'},         {v:-0.8, f:'-0.8%'},  ],
+                [{f: 'Galicia', v: 'ES-GA'},            {v:0.5, f:'0.5%'},    ],
+                [{f: 'Murcia', v: 'ES-MC'},             {v:-0.4, f:'-0.4%'},   ],
+                [{f: 'País Vasco',v: 'ES-PV'},          {v:-1.8, f:'-1.8%'},   ],
+                [{f: 'Valencia', v: 'ES-VC'},           {v:1.9, f:'1.9%'},    ],
+                ['',      {v:6, f:'6%'}],
+            ]);
+
+            var options = {
+                'title': 'Map',
+                colorAxis: {colors: ['#ff0000','#ffffff', '#00ff00']},
+                'width': 700, 'height': 600, 'region': 'CA', 'resolution': 'provinces',
+                zoom   : 12,
+                center : new google.maps.LatLng(41.591824, -81.520271)
+            };
+
+            var container = document.getElementById('map_canvas');
+            var geomap = new google.visualization.map(container);
+            geomap.draw(data, options);
+        };
+    </script>
+</head>
+<body>
+<div id='map_canvas'></div>
+</body>
+
+</html>

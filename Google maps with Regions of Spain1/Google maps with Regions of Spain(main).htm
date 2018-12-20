@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+        google.load('visualization', '1', {'packages': ['geochart']});
+        google.setOnLoadCallback(drawRegionsMap);
+
+        function drawRegionsMap() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Country');
+            data.addColumn('number', 'Trimestral');
+            data.addRows([[{f: 'Islas Baleares', v: 'ES-IB'}, -0.1], [{f: 'Madrid', v: 'ES-MD'}, -0.6], [{
+                f: 'Navarra',
+                v: 'ES-NC'
+            }, 3.2], [{f: 'La Rioja', v: 'ES-RI'}, -3.3], [{f: 'Asturias', v: 'ES-AS'}, 1.0], [{
+                f: 'Cantabria',
+                v: 'ES-CB'
+            }, -2.3], [{f: 'Ceuta', v: 'ES-CE'}, -1.6], [{f: 'Melilla', v: 'ES-ML'}, 1.7], [{
+                f: 'Canarias',
+                v: 'ES-CN'
+            }, -0.8], [{f: 'Andalucía', v: 'ES-AN'}, -0.9], [{f: 'Aragón', v: 'ES-AR'}, -1.1], [{
+                f: 'Castilla-La Mancha',
+                v: 'ES-CM'
+            }, -0.4], [{f: 'Castilla y León', v: 'ES-CL'}, -1.4], [{f: 'Cataluña', v: 'ES-CT'}, 0.2], [{
+                f: 'Extremadura',
+                v: 'ES-EX'
+            }, -2.9], [{f: 'Galicia', v: 'ES-GA'}, -0.9], [{f: 'Murcia', v: 'ES-MC'}, 0.0], [{
+                f: 'País Vasco',
+                v: 'ES-PV'
+            }, -1.6], [{f: 'Valencia', v: 'ES-VC'} ,1.0]]);
+
+            var options = {
+                'title': 'Map',
+                colorAxis: {colors: ['#ff0000','#ffffff', '#00ff00']},
+                'width': 700, 'height': 600, 'region': 'ES', 'resolution': 'provinces',
+            };
+            var container = document.getElementById('map_canvas');
+            var geochart = new google.visualization.GeoChart(container);
+            geochart.draw(data, options);
+        };
+    </script>
+</head>
+<body>
+<div id='map_canvas'></div>
+</body>
+
+</html>

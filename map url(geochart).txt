@@ -1,0 +1,17 @@
+http://www.danielpinero.com/how-to-create-heat-map-spain
+http://code.highcharts.com/mapdata/
+http://jsfiddle.net/gh/get/jquery/1.11.0/highslide-software/highcharts.com/tree/master/samples/mapdata/countries/es/es-all
+https://www.amcharts.com/
+https://developers.google.com/maps/documentation/javascript/get-api-key
+https://developers.google.com/maps/documentation/javascript/combining-data
+https://www.census.gov/search-results.html?page=1&stateGeo=none&searchtype=web&cssp=Typeahead&q=census+regions+for+spain&search.x=0&search.y=0&search=submit
+http://geojson.org/geojson-spec.html#id5
+https://
+https://www.amcharts.com/demos/us-heat-map/www.w3schools.com/graphics/google_maps_reference.asp
+https://howtobuyinspain.com/en/must-see-charts/
+
+
+==================
+https://www.amcharts.com/lib/3/
+=====================
+https://developers.google.com/chart/interactive/docs/gallery/geomap

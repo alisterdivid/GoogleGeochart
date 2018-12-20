@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>City of Euclid: Maps</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+
+<div id="map-canvas" style="width: 640px; height: 480px; float:left; border: 1px solid black;">Loading maps...</div>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOl57Bc7ztZxlwRRA1ljkdzBgdkfekL9w&callback=initMap">
+</script>
+<script type="text/javascript">
+
+    var map;
+    var geoXml;
+    var mapTitle = ['', 'Zoning', 'Garbage'];
+    var kml = [];
+
+    function initMaps() {
+        mapOptions = {
+            zoom: 12,
+            center: new google.maps.LatLng(41.591824, -81.520271)
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        kml[1].setMap(map);
+    }
+
+    function loadKml(n) {
+        kml[1].setMap(null);
+        kml[2].setMap(null);
+        kml[n].setMap(map);
+        $('#map-title').text(mapTitle[n] + ' Map');
+    }
+
+    $(document).ready(function () {
+        initMaps();
+    });
+
+</script>
+</body>
+</html>

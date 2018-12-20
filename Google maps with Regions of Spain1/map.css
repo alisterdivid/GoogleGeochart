@@ -1,0 +1,14 @@
+#chartdiv {
+	background-color : white;
+    width: 400px;
+    height: 500px;
+}
+body{
+	background-color : #dddddd;
+	align : left;
+}
+.chartdiv {
+	margin : 0 auto;
+    width: 800px;
+    height: 700px;
+}
